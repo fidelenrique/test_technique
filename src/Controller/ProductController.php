@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class QuestionController extends AbstractController
+class ProductController extends AbstractController
 {
     /**
      * @Route("/")
@@ -14,11 +14,11 @@ class QuestionController extends AbstractController
      */
     public function homepage(): Response
     {
-        return $this->render('questions/homepage.html.twig');
+        return $this->render('products/homepage.html.twig');
     }
 
     /**
-     * @Route("/questions/{slug}")
+     * @Route("/products/{slug}")
      * @param $slug
      * @return Response
      */
@@ -30,8 +30,8 @@ class QuestionController extends AbstractController
             'Maybe... try saying the spell backwards?',
         ];
 
-        return $this->render('questions/show.html.twig', [
-            'question' => ucwords(str_replace('-', ' ', $slug)),
+        return $this->render('products/show.html.twig', [
+            'product' => ucwords(str_replace('-', ' ', $slug)),
             'answers' => $answers
         ]);
     }
