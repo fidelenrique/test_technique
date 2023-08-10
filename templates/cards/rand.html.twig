@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card: Cartes {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="my-4">10 cartes de manière aléatoire</h2>
+
+            <div class="row d-flex justify-content-center">
+            {% for key, items in cards %}
+                {% for cardNumber, cardColor in items %}
+                {% set imageName = cardNumber ~ '-' ~ cardColor ~ '.png' %}
+
+                    {% if key <= 4 %}
+                        <div class="col-lg-2 col-md-6">
+                            <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                        </div>
+                    {% endif %}
+
+                    {% if key == 5 %}
+                        </div>
+                        <br>
+                        <div class="row d-flex justify-content-center">
+                    {% endif %}
+
+                    {% if key > 4 %}
+                        <div class="col-lg-2 col-md-6">
+                            <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                        </div>
+                    {% endif %}
+
+                    {% if key == 9 %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </div>
+
+            <h2 class="my-4">Cartes ascendantes</h2>
+            <div class="row d-flex justify-content-center">
+
+                {% for key, items in ascCards %}
+                    {% if items is iterable %}
+
+                        {% for cardNumber, cardColor in items %}
+                            {% set imageName = key ~ '-' ~ cardColor ~ '.png' %}
+                            <div class="col-lg-2 col-md-6">
+                                <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Constant\Card;
 
 class ProductController extends AbstractController
 {
@@ -15,6 +16,20 @@ class ProductController extends AbstractController
     public function homepage(): Response
     {
         return $this->render('products/homepage.html.twig');
+    }
+
+    /**
+     * @Route("/card/rand")
+     * @return Response
+     */
+    public function randCard(): Response
+    {
+        $cards = Card::mainCards();
+
+        return $this->render('cards/rand.html.twig', [
+            'cards' => $cards['cards'],
+            'ascCards' => $cards['asc-cards']
+        ]);
     }
 
     /**
