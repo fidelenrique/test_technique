@@ -37,21 +37,43 @@
                 {% endfor %}
             {% endfor %}
             </div>
-
-            <h2 class="my-4">Cartes ascendantes</h2>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="my-4">Cartes ascendantes par valeur</h2>
             <div class="row d-flex justify-content-center">
+                {% set count = 0 %}
+                {% for items in ascCards %}
+                    {% for value, cardsColor in items %}
 
-                {% for key, items in ascCards %}
-                    {% if items is iterable %}
+                        {% for index, color in cardsColor %}
+                            {% set count = count + 1 %}
+                            {% set imageName = value ~ '-' ~ color ~ '.png' %}
 
-                        {% for cardNumber, cardColor in items %}
-                            {% set imageName = key ~ '-' ~ cardColor ~ '.png' %}
-                            <div class="col-lg-2 col-md-6">
-                                <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                            {% if count < 6 %}
+                                <div class="col-lg-2 col-md-6">
+                                    <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                                </div>
+                            {% endif %}
+
+                            {% if count == 6 %}
                             </div>
-                        {% endfor %}
-                    {% endif %}
+                            <br>
+                            <div class="row d-flex justify-content-center">
+                            {% endif %}
 
+                            {% if count > 5 %}
+                                <div class="col-lg-2 col-md-6">
+                                    <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                                </div>
+                            {% endif %}
+
+                            {% if count == 10 %}
+                            </div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% endfor %}
                 {% endfor %}
             </div>
 
