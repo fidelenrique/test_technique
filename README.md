@@ -1,5 +1,5 @@
 ## Présentation
-jeu de cartes
+Jeu de cartes
 
 Dans ce jeu, un joueur tire une main de 10 cartes de manière aléatoire.
 Chaque carte possède une couleur ("Carreaux", par exemple) et une valeur ("10", par exemple).

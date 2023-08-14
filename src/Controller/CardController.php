@@ -10,7 +10,7 @@ use App\Constant\Card;
 class CardController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @return Response
      */
     public function homepage(): Response
@@ -19,7 +19,7 @@ class CardController extends AbstractController
     }
 
     /**
-     * @Route("/card/rand", name="test")
+     * @Route("/card/rand", name="play")
      * @return Response
      */
     public function randCard(): Response
