@@ -28,7 +28,8 @@ class CardController extends AbstractController
 
         return $this->render('cards/rand.html.twig', [
             'cards' => $cards['cards'],
-            'ascCards' => $cards['asc-cards']
+            'ascCards' => $cards['asc-cards'],
+            'orderByColors' => $cards['order-by-colors']
         ]);
     }
 }

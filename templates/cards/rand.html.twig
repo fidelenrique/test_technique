@@ -10,8 +10,8 @@
 
             <div class="row d-flex justify-content-center">
             {% for key, items in cards %}
-                {% for cardNumber, cardColor in items %}
-                {% set imageName = cardNumber ~ '-' ~ cardColor ~ '.png' %}
+                {% for value, cardColor in items %}
+                {% set imageName = value ~ '-' ~ cardColor ~ '.png' %}
 
                     {% if key <= 4 %}
                         <div class="col-lg-2 col-md-6">
@@ -78,6 +78,46 @@
             </div>
 
         </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2 class="my-4">Cartes triées par couleur</h2>
+            <div class="row d-flex justify-content-center">
+                {% set count = 0 %}
+                {% for items in orderByColors %}
+                    {% for color, cardsColors in items %}
+                        {% for value in cardsColors|sort %}
+                            {% set count = count + 1 %}
+                            {% set imageName = value ~ '-' ~ color ~ '.png' %}
+
+                            {% if count < 6 %}
+                                <div class="col-lg-2 col-md-6">
+                                    <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                                </div>
+                            {% endif %}
+
+                            {% if count == 6 %}
+                            </div>
+                            <br>
+                            <div class="row d-flex justify-content-center">
+                            {% endif %}
+
+                            {% if count > 5 %}
+                                <div class="col-lg-2 col-md-6">
+                                    <img src="{{ asset('images/cards/' ~ imageName )}}" width="100">
+                                </div>
+                            {% endif %}
+
+                            {% if count == 10 %}
+                            </div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     </div>
 </div>
