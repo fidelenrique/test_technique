@@ -19,7 +19,7 @@ class CardController extends AbstractController
     }
 
     /**
-     * @Route("/card/rand")
+     * @Route("/card/rand", name="test")
      * @return Response
      */
     public function randCard(): Response
